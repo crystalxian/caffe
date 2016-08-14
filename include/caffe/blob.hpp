@@ -27,6 +27,7 @@ class Blob {
        : data_(), diff_(), count_(0), capacity_(0) {}
 
   /// @brief Deprecated; use <code>Blob(const vector<int>& shape)</code>.
+  /// Prefixing the 'explicit' keyword to the constructor prevents the compiler from using that constructor for implicit conversions.
   explicit Blob(const int num, const int channels, const int height,
       const int width);
   explicit Blob(const vector<int>& shape);
@@ -53,6 +54,7 @@ class Blob {
   void ReshapeLike(const Blob& other);
   inline string shape_string() const {
     ostringstream stream;
+    
     for (int i = 0; i < shape_.size(); ++i) {
       stream << shape_[i] << " ";
     }
@@ -83,6 +85,7 @@ class Blob {
    * @param end_axis The first axis to exclude from the slice.
    */
   inline int count(int start_axis, int end_axis) const {
+   //LESS OR EQUAL 
     CHECK_LE(start_axis, end_axis);
     CHECK_GE(start_axis, 0);
     CHECK_GE(end_axis, 0);
