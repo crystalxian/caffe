@@ -148,6 +148,7 @@ class Blob {
       // Axis is out of range, but still in [0, 3] (or [-4, -1] for reverse
       // indexing) -- this special case simulates the one-padding used to fill
       // extraneous axes of legacy blobs.
+      // remaining question?
       return 1;
     }
     return shape(index);
@@ -230,6 +231,7 @@ class Blob {
   Dtype* mutable_cpu_diff();
   Dtype* mutable_gpu_diff();
   void Update();
+  //Update data = -diff + data
   void FromProto(const BlobProto& proto, bool reshape = true);
   void ToProto(BlobProto* proto, bool write_diff = false) const;
 
