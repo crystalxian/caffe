@@ -63,6 +63,7 @@ class Layer {
    * followed by Reshape to set up sizes of top blobs and internal buffers.
    * Sets up the loss weight multiplier blobs for any non-zero loss weights.
    * This method may not be overridden.
+   * 继承的子类不能够重写这个方法。
    */
   void SetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
